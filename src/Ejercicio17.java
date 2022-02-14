@@ -36,6 +36,7 @@ public class Ejercicio17 {
 		for(Electrodomestico electrodomestico: electrodomesticos) {
 			double precioActual = electrodomestico.precioFinal();
 			precioTotal+=precioActual;
+			//System.out.println(precioActual);
 			if(electrodomestico instanceof Television) {
 				precioTotalTelevisores+=precioActual;				
 			}else if(electrodomestico instanceof Lavadora) {
