@@ -42,11 +42,11 @@ public class Ejercicio16 {
 		personas.add(persona3);
 
 		for (Persona persona : personas) {
-			if (persona.calcularIMC() == -1) {
+			if (persona.calcularIMC() <0) {
 				System.out.println(persona.getNombre() + " está por debajo de su peso ideal");
 			} else if (persona.calcularIMC() == 0) {
 				System.out.println(persona.getNombre() + " está en su peso ideal");
-			} else if(persona.calcularIMC()==1){
+			} else{
 				System.out.println(persona.getNombre() + " está por encima de su peso ideal");
 			}
 			

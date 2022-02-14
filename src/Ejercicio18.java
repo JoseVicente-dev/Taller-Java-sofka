@@ -3,6 +3,75 @@ public class Ejercicio18 {
 
 	public static void main(String[] args) {
 
+		Serie[] series = new Serie[5];
+		Videojuego[] videojuegos = new Videojuego[5];
+
+		Serie serie1 = new Serie("Peacemaker", "Josh");
+		Serie serie2 = new Serie("SnK", 4, "anime", "Isayama");
+		Serie serie3 = new Serie("Dark", 3, "suspenso", "bo Odar");
+		Serie serie4 = new Serie("Cowboy bebop", 1, "anime", "Watanabe");
+		Serie serie5 = new Serie("Seinfeld", 9, "comedia", "Seinfeld");
+
+		Videojuego vg1 = new Videojuego("FF7", 100);
+		Videojuego vg2 = new Videojuego("GoW2", 40);
+		Videojuego vg3 = new Videojuego("GTA6", 60);
+		Videojuego vg4 = new Videojuego("SF2", 10);
+		Videojuego vg5 = new Videojuego("DK1", 30);
+
+		series[0] = serie1;
+		series[1] = serie2;
+		series[2] = serie3;
+		series[3] = serie4;
+		series[4] = serie5;
+
+		videojuegos[0] = vg1;
+		videojuegos[1] = vg2;
+		videojuegos[2] = vg3;
+		videojuegos[3] = vg4;
+		videojuegos[4] = vg5;
+
+		serie1.entregar();
+		serie4.entregar();
+
+		vg1.entregar();
+		vg3.entregar();
+		vg5.entregar();
+
+		int seriesEntregadas = 0;
+		int vgEntregados = 0;
+
+		Serie serieMasTemporadas = series[0];
+		Videojuego vgMasLargo=videojuegos[0];
+
+		for (Serie s : series) {
+			if (s.isEntregado()) {
+				seriesEntregadas++;
+				s.devolver();
+			}
+
+			if (s.compareTo(serieMasTemporadas) > 0) {
+				serieMasTemporadas = s;
+			}
+		}
+		
+		for(Videojuego v: videojuegos) {
+			if(v.isEntregado()) {
+				vgEntregados++;
+				v.devolver();
+			}
+			
+			if (v.compareTo(vgMasLargo)>0) {
+				vgMasLargo=v;
+			}
+		}
+		
+		System.out.println("Series entregadas = "+seriesEntregadas);
+		System.out.println("La serie con más temporadas es: ");
+		System.out.println(serieMasTemporadas.toString());
+		System.out.println("Videojuego entregrados = "+vgEntregados);
+		System.out.println("El videojuego con más horas estimadas es: ");
+		System.out.println(vgMasLargo.toString());
+
 	}
 
 }
@@ -93,7 +162,7 @@ class Serie implements Entregable {
 	public boolean isEntregado() {
 		return this.entregado;
 	}
-	
+
 	public int compareTo(Object s) {
 
 		Serie serie = (Serie) s;
@@ -185,8 +254,7 @@ class Videojuego implements Entregable {
 	public boolean isEntregado() {
 		return this.entregado;
 	}
-	
-	
+
 	public int compareTo(Object v) {
 		Videojuego videojuego = (Videojuego) v;
 		if (videojuego.horasEstimadas < this.horasEstimadas) {
